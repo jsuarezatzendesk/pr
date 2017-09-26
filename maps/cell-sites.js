@@ -26,6 +26,7 @@ data.pipe(csv({json: true}))
 
     Object.assign(feature.properties, row)
     delete feature.properties.County
+    delete feature.properties.geoid
 
     feature.properties.updated = updated
     feature.properties.fill = colors(row['Percent Out'])
