@@ -12,7 +12,11 @@ data.pipe(csv({json: true}))
       .filter(f => f.properties.name.localeCompare(row.County  + ' Municipio, PR', 'es', {sensitivity: 'base'}) == 0)
       [0]
     console.log(row.County, feature.properties)
+
     Object.assign(feature.properties, row)
+    delete feature.properties.County
+
+    feature.properties.fill = '#ff0000'
   })
   .on('end', () => {
 
