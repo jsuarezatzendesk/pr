@@ -1,7 +1,7 @@
 const fs = require('fs')
 const csv = require('binary-csv')
 const base = JSON.parse(fs.readFileSync('./municipios.geojson').toString())
-const data = fs.createReadStream('./cell-sites-9-25-2017.csv')
+const data = fs.createReadStream('./cell-sites-9-26-2017.csv')
 
 function colors(pct) {
   pct = parseFloat(pct)
