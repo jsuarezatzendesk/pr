@@ -1,7 +1,9 @@
+const updated = '9-26-2017'
+
 const fs = require('fs')
 const csv = require('binary-csv')
 const base = JSON.parse(fs.readFileSync('./municipios.geojson').toString())
-const data = fs.createReadStream('./cell-sites-9-26-2017.csv')
+const data = fs.createReadStream('./cell-sites-' + updated + '.csv')
 
 function colors(pct) {
   pct = parseFloat(pct)
@@ -25,6 +27,7 @@ data.pipe(csv({json: true}))
     Object.assign(feature.properties, row)
     delete feature.properties.County
 
+    feature.properties.updated = updated
     feature.properties.fill = colors(row['Percent Out'])
   })
   .on('end', () => {
