@@ -30,6 +30,9 @@ data.pipe(csv({json: true}))
 
     feature.properties.updated = updated
     feature.properties.fill = colors(row['Percent Out'])
+    if (parseFloat(row['Percent Out']) > 99) {
+      feature.properties['fill-opacity'] = .9
+    }
   })
   .on('end', () => {
 
