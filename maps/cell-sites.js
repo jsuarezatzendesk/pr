@@ -1,4 +1,4 @@
-const updated = '10-04-2017'
+const updated = '10-05-2017'
 
 const fs = require('fs')
 const csv = require('binary-csv')
@@ -37,5 +37,6 @@ data.pipe(csv({json: true}))
   .on('end', () => {
 
     fs.writeFileSync('./cell-sites.geojson', new Buffer(JSON.stringify(base)))
+    fs.writeFileSync('./cell-sites-' + updated + '.geojson', new Buffer(JSON.stringify(base)))
     console.log('done')
   })
